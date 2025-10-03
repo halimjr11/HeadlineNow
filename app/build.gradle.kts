@@ -10,12 +10,16 @@ android {
     namespace = "com.halimjr11.headlinenow"
     compileSdk = 36
 
+    val apiKey: String = project.findProperty("NEWS_API_KEY") as String? ?: ""
+
     defaultConfig {
         applicationId = "com.halimjr11.headlinenow"
         minSdk = 27
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
+
+        buildConfigField("String", "NEWS_API_KEY", "\"$apiKey\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

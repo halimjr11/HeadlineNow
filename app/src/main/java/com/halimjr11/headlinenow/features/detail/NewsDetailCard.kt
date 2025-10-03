@@ -15,28 +15,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.halimjr11.headlinenow.R
 import com.halimjr11.headlinenow.ui.components.LabelText
-import com.halimjr11.headlinenow.ui.components.NewsFooter
 import com.halimjr11.headlinenow.ui.components.NewsHeader
 import com.halimjr11.headlinenow.ui.theme.HeadlineNowTheme
 import com.halimjr11.headlinenow.ui.theme.Typography
 
 @Composable
 fun NewsDetailCard(
-    avatarUrl: String,
+    avatarUrl: String = "",
     source: String,
     time: String,
     imageUrl: String,
     category: String,
     title: String,
     description: String,
-    likeCount: String,
-    commentCount: String
 ) {
     Column(
         modifier = Modifier
@@ -51,8 +50,9 @@ fun NewsDetailCard(
         AsyncImage(
             model = imageUrl,
             contentDescription = "News image",
+            placeholder = painterResource(R.drawable.banner),
             modifier = Modifier
-                .fillMaxWidth()
+                .height(250.dp)
                 .clip(RoundedCornerShape(12.dp)),
             contentScale = ContentScale.Crop
         )
@@ -74,8 +74,6 @@ fun NewsDetailCard(
             overflow = TextOverflow.Ellipsis
         )
         Spacer(Modifier.height(12.dp))
-
-        NewsFooter(likeCount, commentCount)
     }
 }
 
@@ -92,8 +90,6 @@ fun PreviewNewsDetailCard() {
             category = "Europe",
             title = "Ukraine’s President Zelensky to BBC: Blood money being paid for Russian oil",
             description = "Ukrainian President Volodymyr Zelensky has accused European countries that continue to buy Russian oil of 'earning their money in other people’s blood'.",
-            likeCount = "24.5K",
-            commentCount = "1K"
         )
     }
 }

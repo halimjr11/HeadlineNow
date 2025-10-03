@@ -60,6 +60,7 @@ fun NewsCard(
             AsyncImage(
                 model = imageUrl,
                 contentDescription = title,
+                placeholder = painterResource(R.drawable.banner),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -95,7 +96,7 @@ fun NewsCard(
             ) {
                 // Source icon (dummy bbc logo placeholder)
                 Image(
-                    painter = painterResource(id = R.drawable.ic_launcher_background), // add your source logo here
+                    painter = painterResource(id = R.drawable.logo), // add your source logo here
                     contentDescription = "Source",
                     modifier = Modifier
                         .size(18.dp)
