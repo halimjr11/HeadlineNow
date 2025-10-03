@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -28,6 +29,7 @@ fun RecommendedSection(
         Text(
             text = title,
             style = Typography.titleMedium,
+            color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.padding(vertical = 8.dp)
         )
 
@@ -54,16 +56,19 @@ fun PreviewRecommendedSection() {
     val mockArticles = listOf(
         ArticleDomain(
             title = "Russia-Ukraine conflict: latest updates",
+            description = "The Russian warship Moskva has sunk in the Black Sea after sustaining damage during the conflict. Ukraine claims responsibility.",
             urlToImage = "https://ichef.bbci.co.uk/news/976/cpsprodpb/12A23/production/_124178139_moskva.jpg",
             source = SourceDomain("bbc.com", "BBC News")
         ),
         ArticleDomain(
             title = "EU proposes new sanctions on Russian oil",
+            description = "The European Union has proposed new sanctions targeting Russian oil, aiming to cut dependency and increase economic pressure on Moscow.",
             urlToImage = "https://ichef.bbci.co.uk/news/976/cpsprodpb/5C9E/production/_124178141_eu.jpg",
             source = SourceDomain("cnn.com", "CNN")
         ),
         ArticleDomain(
             title = "Ukrainian cities face more shelling overnight",
+            description = "Several Ukrainian cities were hit by shelling overnight, intensifying the ongoing conflict as local authorities report damage and casualties.",
             urlToImage = "https://ichef.bbci.co.uk/news/976/cpsprodpb/AB12/production/_124178143_kiev.jpg",
             source = SourceDomain("nytimes.com", "New York Times")
         )

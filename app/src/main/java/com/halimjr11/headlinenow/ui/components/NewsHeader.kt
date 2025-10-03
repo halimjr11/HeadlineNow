@@ -39,6 +39,6 @@ fun NewsHeader(
                 LabelText(text = time)
             }
         }
-        ButtonPrimary(text = "Following") { onFollowClick() }
+//        ButtonPrimary(text = "Following") { onFollowClick() }
     }
 }
