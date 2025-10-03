@@ -1,4 +1,7 @@
 package com.halimjr11.headlinenow
 
-class NowApplication {
-}
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class NowApplication : Application()
