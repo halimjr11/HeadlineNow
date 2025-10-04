@@ -76,12 +76,12 @@ This separation of concerns ensures **testability, scalability, and maintainabil
 ## 📄 License
 
 ```
-Copyright (c) 2025 Your Name
+Copyright (c) 2025 Nurhaq Halim
 
 Licensed under the MIT License.  
 You may obtain a copy of the License at
 
-    https://opensource.org/licenses/MIT
+https://opensource.org/licenses/MIT
 ```
 
 ---
