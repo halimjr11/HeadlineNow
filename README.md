@@ -26,9 +26,11 @@ allowing users to **stay informed anywhere, anytime**.
 - **Retrofit2 + OkHttp3** – REST API client
 - **Coroutines + StateFlow** – Asynchronous & reactive programming
 - **Hilt (Dagger)** – Dependency Injection
-- **Coil** – Image loading with caching
 - **Lottie** – Beautiful animations
 - **Navigation Compose** – In-app navigation
+- **JUnit5** – Unit testing framework
+- **kotlinx.coroutines.test** – Testing coroutines and asynchronous code
+- **MockK** – Mocking and stubbing for Kotlin
 
 ---
 

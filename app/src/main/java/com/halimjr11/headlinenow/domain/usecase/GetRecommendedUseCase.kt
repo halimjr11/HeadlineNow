@@ -5,8 +5,9 @@ import com.halimjr11.headlinenow.domain.model.ArticleDomain
 import com.halimjr11.headlinenow.utils.DomainResult
 import com.halimjr11.headlinenow.utils.coroutines.CoroutineDispatcherProvider
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class GetRecommendedUseCase(
+class GetRecommendedUseCase @Inject constructor(
     private val repository: NewsRepository,
     private val dispatcher: CoroutineDispatcherProvider
 ) {
