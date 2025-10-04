@@ -1,5 +1,9 @@
 # 📰 HeadlineNow
 
+<p align="center">
+  <img src="screenshots/banner.png" alt="Banner" width="100%"/>
+</p>
+
 HeadlineNow is a **modern, fast, and reliable news application** built with the latest Android
 technologies.  
 It delivers **up-to-date headlines** from multiple trusted sources
