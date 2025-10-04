@@ -35,13 +35,11 @@ fun NewsDetailCard(
     imageUrl: String,
     category: String,
     title: String,
-    description: String,
+    description: String
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(12.dp)
-            .background(MaterialTheme.colorScheme.surface)
             .padding(16.dp)
     ) {
         NewsHeader(avatarUrl, source, time, onFollowClick = {})
@@ -64,7 +62,12 @@ fun NewsDetailCard(
             style = Typography.labelSmall
         )
         Spacer(Modifier.height(6.dp))
-        Text(title, style = Typography.titleMedium, fontWeight = FontWeight.Bold)
+        Text(
+            title,
+            color = MaterialTheme.colorScheme.primary,
+            style = Typography.titleMedium,
+            fontWeight = FontWeight.Bold
+        )
         Spacer(Modifier.height(8.dp))
         Text(
             description,

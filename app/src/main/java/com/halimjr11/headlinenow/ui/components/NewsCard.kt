@@ -61,6 +61,7 @@ fun NewsCard(
                 model = imageUrl,
                 contentDescription = title,
                 placeholder = painterResource(R.drawable.banner),
+                error = painterResource(R.drawable.banner),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()

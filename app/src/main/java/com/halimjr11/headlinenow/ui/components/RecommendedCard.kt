@@ -43,6 +43,7 @@ fun RecommendedCard(article: ArticleDomain, onClick: () -> Unit) {
                 model = article.url, //URL
                 contentDescription = null,
                 placeholder = painterResource(R.drawable.banner),
+                error = painterResource(R.drawable.banner),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp),

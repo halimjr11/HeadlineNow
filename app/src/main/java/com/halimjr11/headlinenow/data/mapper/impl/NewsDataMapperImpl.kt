@@ -8,8 +8,11 @@ import com.halimjr11.headlinenow.utils.coroutines.CoroutineDispatcherProvider
 import kotlinx.coroutines.withContext
 import java.time.Duration
 import java.time.Instant
+import javax.inject.Inject
 
-class NewsDataMapperImpl(private val dispatchers: CoroutineDispatcherProvider) : NewsDataMapper {
+class NewsDataMapperImpl @Inject constructor(
+    private val dispatchers: CoroutineDispatcherProvider
+) : NewsDataMapper {
     override suspend fun mapResponseToDomain(resp: ArticleResponse): List<ArticleDomain> =
         withContext(dispatchers.io) {
             resp.articles?.let { articles ->

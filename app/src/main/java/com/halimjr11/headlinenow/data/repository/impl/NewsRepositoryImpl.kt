@@ -7,8 +7,9 @@ import com.halimjr11.headlinenow.domain.model.ArticleDomain
 import com.halimjr11.headlinenow.utils.DomainResult
 import com.halimjr11.headlinenow.utils.coroutines.CoroutineDispatcherProvider
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class NewsRepositoryImpl(
+class NewsRepositoryImpl @Inject constructor(
     private val apiService: NewsService,
     private val dispatcherProvider: CoroutineDispatcherProvider,
     private val mapper: NewsDataMapper
@@ -18,8 +19,7 @@ class NewsRepositoryImpl(
     ): DomainResult<List<ArticleDomain>> = withContext(dispatcherProvider.io) {
         try {
             val response = apiService.fetchTopHeadlines(
-                country = country,
-                key = ""
+                country = country
             )
             DomainResult.Success(mapper.mapResponseToDomain(response))
         } catch (e: Exception) {
@@ -34,8 +34,7 @@ class NewsRepositoryImpl(
         try {
             val response = apiService.fetchEverything(
                 query = query,
-                sources = sources,
-                apiKey = ""
+                sources = sources
             )
             DomainResult.Success(mapper.mapResponseToDomain(response))
         } catch (e: Exception) {

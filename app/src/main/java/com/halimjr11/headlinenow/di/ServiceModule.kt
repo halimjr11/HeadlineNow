@@ -20,7 +20,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class ServiceModule {
+class ServiceModule {
+
+    @Singleton
+    @Provides
+    @Named(Constant.BASE_KEY)
+    fun provideBaseUrl(): String = Constant.BASE_URL
+
     @Singleton
     @Provides
     fun provideHttpLogging(): HttpLoggingInterceptor {
@@ -58,7 +64,7 @@ abstract class ServiceModule {
     @Provides
     @Named(Constant.RETROFIT)
     fun provideRetrofitMoFiz(
-        @Named(Constant.BASE_URL) baseUrl: String,
+        @Named(Constant.BASE_KEY) baseUrl: String,
         client: OkHttpClient
     ): Retrofit {
         return Retrofit.Builder()

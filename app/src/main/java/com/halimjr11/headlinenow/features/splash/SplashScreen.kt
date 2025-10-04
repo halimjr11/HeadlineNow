@@ -50,14 +50,6 @@ fun SplashScreen(
                     if (isDark) Color.White else Color.Black
                 )
             )
-
-            Spacer(Modifier.height(16.dp))
-
-            Text(
-                text = stringResource(id = R.string.app_name),
-                color = Color.White,
-                style = MaterialTheme.typography.titleLarge
-            )
         }
     }
 }

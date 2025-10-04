@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -10,8 +12,6 @@ android {
     namespace = "com.halimjr11.headlinenow"
     compileSdk = 36
 
-    val apiKey: String = project.findProperty("NEWS_API_KEY") as String? ?: ""
-
     defaultConfig {
         applicationId = "com.halimjr11.headlinenow"
         minSdk = 27
@@ -19,6 +19,14 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        // ✅ Inject property ke BuildConfig
+        val localProperties = Properties()
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localProperties.load(localPropertiesFile.inputStream())
+        }
+
+        val apiKey: String = localProperties.getProperty("NEWS_API_KEY") ?: ""
         buildConfigField("String", "NEWS_API_KEY", "\"$apiKey\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

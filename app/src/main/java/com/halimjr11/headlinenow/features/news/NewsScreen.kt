@@ -37,7 +37,7 @@ import com.halimjr11.headlinenow.utils.UiState
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsScreen(
-    onCardClick: () -> Unit,
+    onCardClick: (ArticleDomain) -> Unit,
     viewModel: NewsViewModel = hiltViewModel()
 ) {
     val state by viewModel.articlesState.collectAsState()
@@ -45,28 +45,7 @@ fun NewsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.app_name)) },
-                navigationIcon = {
-                    IconButton(onClick = { /* handle back */ }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
-                    }
-                },
-                actions = {
-                    IconButton(onClick = {
-                        val newMode = if (isDark) {
-                            AppCompatDelegate.MODE_NIGHT_NO   // Light mode
-                        } else {
-                            AppCompatDelegate.MODE_NIGHT_YES  // Dark mode
-                        }
-                        AppCompatDelegate.setDefaultNightMode(newMode)
-                    }) {
-                        if (isDark) {
-                            Icon(Icons.Default.LightMode, contentDescription = "Switch to Light")
-                        } else {
-                            Icon(Icons.Default.DarkMode, contentDescription = "Switch to Dark")
-                        }
-                    }
-                }
+                title = { Text(stringResource(R.string.app_name)) }
             )
         }
     ) { padding ->
@@ -83,7 +62,7 @@ fun NewsScreen(
 
                 is UiState.Error -> {
                     ErrorView(
-                        message = (state as UiState.Error).message,
+                        message = "Oops, something went wrong",
                         onRetry = { viewModel.fetchTrendingNews() }
                     )
                 }
@@ -103,7 +82,7 @@ fun NewsScreen(
                                 source = article.source.name,
                                 timeAgo = article.time,
                             ) {
-                                // TODO GO TO DETAIL
+                                onCardClick(article)
                             }
                         }
                     }

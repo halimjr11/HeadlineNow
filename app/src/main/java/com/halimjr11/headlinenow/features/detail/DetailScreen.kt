@@ -1,7 +1,10 @@
 package com.halimjr11.headlinenow.features.detail
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -17,23 +20,27 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.halimjr11.headlinenow.domain.model.ArticleDomain
-import com.halimjr11.headlinenow.ui.components.NewsFooter
+import com.halimjr11.headlinenow.features.recommended.RecommendedSection
 import com.halimjr11.headlinenow.ui.theme.Typography
 import com.halimjr11.headlinenow.utils.UiState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
+    onBackClick: () -> Unit,
+    onRecommendedClick: (ArticleDomain) -> Unit,
     article: ArticleDomain,
-    viewModel: DetailViewModel = hiltViewModel(),
-    onBackClick: () -> Unit
+    viewModel: DetailViewModel = hiltViewModel()
 ) {
     viewModel.onViewLoaded(articleDomain = article)
     val recommendedState by viewModel.shouldShowDetail.collectAsState()
+    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(
@@ -49,40 +56,64 @@ fun DetailScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* share */ }) {
+                    IconButton(
+                        onClick = {
+                            val sendIntent = Intent().apply {
+                                action = Intent.ACTION_SEND
+                                putExtra(Intent.EXTRA_TEXT, "Check this out: ${article.title}\n${article.url}")
+                                type = "text/plain"
+                            }
+                            val shareIntent = Intent.createChooser(sendIntent, null)
+                            context.startActivity(shareIntent)
+                        }
+                    ) {
                         Icon(Icons.Default.Share, contentDescription = "Share")
                     }
+
                 }
             )
-        },
-        bottomBar = {
-            NewsFooter(onLikeClick = {}, onCommentClick = {}, onBookmarkClick = {})
         }
     ) { innerPadding ->
-        // Content scrollable
-        when (recommendedState) {
-            is UiState.Loading -> CircularProgressIndicator()
-            is UiState.Success -> {
-                LazyColumn(
-                    modifier = Modifier
-                        .padding(innerPadding)
-                        .fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    item {
-                        NewsDetailCard(
-                            source = article.source.name,
-                            time = article.time,
-                            imageUrl = article.urlToImage,
-                            category = article.source.category,
-                            title = article.title,
-                            description = article.description
-                        )
-                    }
-                }
+        LazyColumn(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            // detail card
+            item {
+                NewsDetailCard(
+                    source = article.source.name,
+                    time = article.time,
+                    imageUrl = article.urlToImage,
+                    category = article.source.category,
+                    title = article.title,
+                    description = article.description
+                )
             }
 
-            else -> {}
+            // recommended section
+            item {
+                when (recommendedState) {
+                    is UiState.Loading -> {
+                        Box(
+                            modifier = Modifier.fillMaxWidth(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            CircularProgressIndicator()
+                        }
+                    }
+
+                    is UiState.Success -> {
+                        val data = (recommendedState as UiState.Success<List<ArticleDomain>>).data
+                        RecommendedSection(articles = data) { article ->
+                            onRecommendedClick(article)
+                        }
+                    }
+
+                    else -> {}
+                }
+            }
         }
     }
 }

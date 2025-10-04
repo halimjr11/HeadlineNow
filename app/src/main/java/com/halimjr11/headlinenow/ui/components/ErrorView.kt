@@ -48,12 +48,12 @@ fun ErrorView(
                 .size(200.dp)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         // Error message
         Text(
             text = message,
-            style = Typography.bodySmall,
+            style = Typography.bodyLarge,
             color = Color.Red,
             textAlign = TextAlign.Center
         )
@@ -62,7 +62,7 @@ fun ErrorView(
 
         onRetry?.let {
             ButtonPrimary("Retry") {
-
+                onRetry()
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.halimjr11.headlinenow.features.recommended
 
 import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,7 +26,11 @@ fun RecommendedSection(
     articles: List<ArticleDomain>,
     onArticleClick: (ArticleDomain) -> Unit
 ) {
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
         Text(
             text = title,
             style = Typography.titleMedium,

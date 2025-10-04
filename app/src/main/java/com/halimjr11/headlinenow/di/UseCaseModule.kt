@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class UseCaseModule {
+class UseCaseModule {
     @Provides
     @Singleton
     fun provideGetTopHeadlineUseCase(

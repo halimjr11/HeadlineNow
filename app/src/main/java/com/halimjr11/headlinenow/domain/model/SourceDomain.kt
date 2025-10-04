@@ -1,5 +1,8 @@
 package com.halimjr11.headlinenow.domain.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class SourceDomain(
     val id: String = "",
     val name: String = "",

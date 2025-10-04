@@ -23,6 +23,6 @@ fun ButtonPrimary(text: String, action: () -> Unit) {
             .clickable(onClick = action)
             .padding(horizontal = 12.dp, vertical = 6.dp)
     ) {
-        Text(text = text, color = Color.White, style = Typography.labelSmall)
+        Text(text = text, color = Color.White, style = Typography.labelLarge)
     }
 }

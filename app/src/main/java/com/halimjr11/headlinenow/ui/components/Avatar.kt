@@ -16,6 +16,7 @@ fun Avatar(imageUrl: String, modifier: Modifier = Modifier) {
         model = imageUrl,
         contentDescription = "Avatar",
         placeholder = painterResource(R.drawable.logo),
+        error = painterResource(R.drawable.logo),
         modifier = modifier
             .size(32.dp)
             .clip(CircleShape)
