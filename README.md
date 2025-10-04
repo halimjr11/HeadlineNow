@@ -1,12 +1,15 @@
-# 📰 HeadlineNow  
+# 📰 HeadlineNow
 
-HeadlineNow is a **modern, fast, and reliable news application** built with the latest Android technologies.  
-It delivers **up-to-date headlines** from multiple trusted sources through [NewsAPI](https://newsapi.org),  
-allowing users to **stay informed anywhere, anytime**.  
+HeadlineNow is a **modern, fast, and reliable news application** built with the latest Android
+technologies.  
+It delivers **up-to-date headlines** from multiple trusted sources
+through [NewsAPI](https://newsapi.org),  
+allowing users to **stay informed anywhere, anytime**.
 
 ---
 
 ## ✨ Features
+
 - 🌍 Browse top headlines from trusted sources
 - 📱 Smooth and responsive **Jetpack Compose UI**
 - 🎬 Lottie animations for delightful user experience
@@ -16,6 +19,7 @@ allowing users to **stay informed anywhere, anytime**.
 ---
 
 ## 🛠 Tech Stack
+
 - **Kotlin** – Modern language for Android
 - **Jetpack Compose** – Declarative UI framework
 - **MVVM + Clean Architecture** – For maintainable & scalable code
@@ -29,6 +33,7 @@ allowing users to **stay informed anywhere, anytime**.
 ---
 
 ## 📐 Architecture
+
 The app follows **Clean Architecture + MVVM** pattern:
 
 ```
@@ -59,12 +64,17 @@ This separation of concerns ensures **testability, scalability, and maintainabil
 ---
 
 ## 📸 Screenshots (optional)
-![HeadlineNow Splash](screenshots/splash.jpeg)
-![HeadlineNow Main](screenshots/main.jpeg)
-![HeadlineNow Detail](screenshots/detail.jpeg)
+
+<p align="center">
+  <img src="screenshots/splash.jpeg" alt="Home" width="30%"/>
+  <img src="screenshots/main.jpeg" alt="Detail" width="30%"/>
+  <img src="screenshots/detail.jpeg" alt="Error" width="30%"/>
+</p>
+
 ---
 
 ## 📄 License
+
 ```
 Copyright (c) 2025 Your Name
 
@@ -77,6 +87,7 @@ You may obtain a copy of the License at
 ---
 
 ## 🙌 Acknowledgements
+
 - [NewsAPI](https://newsapi.org) for providing the news data.
 - Jetpack Compose & Android Dev community for modern Android tools.
 
